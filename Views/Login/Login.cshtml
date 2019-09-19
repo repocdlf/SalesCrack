@@ -27,19 +27,20 @@
                 <span class="border">
 
                     <h1>Sign In</h1>
+                    @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                    {
+                        <p>Username</p>
+                        <p><input type="text" name="usuario" required value="Username"</p>
+                        <p>Password</p>
+                        <p><input type="password" name="password" required value="Password" /></p>
 
-                    <p>Username</p>
-                    <p><input type="text" required value="Username"</p>
-                    <p>Password</p>
-                    <p><input type="password" required value="Password" /></p>
+                        <p><a href="#">Forgot Password?</a></p>
 
-                    <p><a href="#">Forgot Password?</a></p>
-
-                    <button type="button" class="btn btn-info">  SIGN IN    </button>
-                    
+                        <button type="submit" class="btn btn-info">  SIGN IN    </button>
 
 
-                </span>
+                    }
+                    </span>
             </div>
         </div>
 

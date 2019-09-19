@@ -9,9 +9,19 @@ namespace SalesCrack.Controllers
     public class LoginController : Controller
     {
         // GET: Login
-        public ActionResult Login()
+        public ActionResult Index()
         {
+            return View("Login");
+        }
+        public ActionResult Login(string usuario, string password)
+        {
+            if (usuario == "Pablo" && password == "1234")
+            {
+                return View("Admin");
+            }
             return View();
         }
     }
+
+    
 }
