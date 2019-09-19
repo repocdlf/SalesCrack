@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalesCrack.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,11 +14,15 @@ namespace SalesCrack.Controllers
         {
             return View("Login");
         }
-        public ActionResult Login(string usuario, string password)
+        public ActionResult Login (Credential modelo)
         {
-            if (usuario == "Pablo" && password == "1234")
+            if (modelo.username=="Admin"&&modelo.password=="1234")
             {
-                return View("Admin");
+              return RedirectToAction("Index","Admin");
+            }
+            if (modelo.username == "Seller" && modelo.password == "1234")
+            {
+                return RedirectToAction("Index", "Seller");
             }
             return View();
         }
