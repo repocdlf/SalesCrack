@@ -168,6 +168,7 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Admin\Admin.cshtml" />
     <Content Include="Views\Seller\Seller.cshtml" />
+    <Content Include="Views\Shared\Navbar_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
