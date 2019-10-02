@@ -16,11 +16,11 @@ namespace SalesCrack.Controllers
         }
         public ActionResult Login (Credential modelo)
         {
-            if (modelo.username=="Admin"&&modelo.password=="1234")
+            if (modelo.username=="admin"&&modelo.password=="1234")
             {
-              return RedirectToAction("Index","Admin");
+              return RedirectToAction("Products", "Admin");
             }
-            if (modelo.username == "Seller" && modelo.password == "1234")
+            if (modelo.username == "seller" && modelo.password == "1234")
             {
                 return RedirectToAction("Index", "Seller");
             }
