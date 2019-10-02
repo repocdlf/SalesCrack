@@ -9,7 +9,17 @@ namespace SalesCrack.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
-        public ActionResult Index()
+        public ActionResult Products()
+        {
+            return View("Admin");
+        }
+
+        public ActionResult Edit()
+        {
+            return View("Admin");
+        }
+
+        public ActionResult Load()
         {
             return View("Admin");
         }
