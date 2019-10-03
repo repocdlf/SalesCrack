@@ -1,0 +1,50 @@
+1,Té Dharamsala - Exotic Liquids,,18.00,true,1
+2,Cerveza tibetana Barley - Exotic Liquids,,19.00,true,2
+3,Sirope de regaliz - Exotic Liquids,,10.00,false,3
+4,Especias Cajun del chef Anton - New Orleans Cajun Delights,,22.00,true,2
+5,Mezcla Gumbo del chef Anton - New Orleans Cajun Delights,,21.35,false,3
+6,Mermelada de grosellas de la abuela - Grandma Kelly's Homestead,,25.00,true,1
+7,Peras secas orgánicas del tío Bob - Grandma Kelly's Homestead,,30.00,true,2
+8,Salsa de arándanos Northwoods - Grandma Kelly's Homestead,,40.00,true,1
+9,Buey Mishi Kobe - Tokyo Traders,,97.00,false,1
+10,Pez espada - Tokyo Traders,,31.00,true,2
+11,Queso Cabrales - Cooperativa de Quesos 'Las Cabras',,21.00,false,3
+12,Queso Manchego La Pastora - Cooperativa de Quesos 'Las Cabras',,38.00,true,2
+13,Algas Konbu - Mayumi's,,16.00,false,1
+14,Cuajada de judías - Mayumi's,,23.25,true,1
+15,Salsa de soja baja en sodio - Mayumi's,,15.50,true,1
+16,Postre de merengue Pavlova - Pavlova, Ltd.,,17.45,true,2
+17,Cordero Alice Springs - Pavlova, Ltd.,,39.00,false,2
+18,Langostinos tigre Carnarvon - Pavlova, Ltd.,,62.50,true,3
+19,Pastas de té de chocolate - Specialty Biscuits, Ltd.,,19.20,false,3
+20,Mermelada de Sir Rodney's - Specialty Biscuits, Ltd.,,81.00,true,2
+21,Bollos de Sir Rodney's - Specialty Biscuits, Ltd.,,10.00,true,1
+22,Pan de centeno crujiente estilo Gustaf's - PB Knäckebröd AB,,21.00,true,1
+23,Pan fino - PB Knäckebröd AB,,19.00,false,1
+24,Refresco Guaraná Fantástica - Refrescos Americanas LTDA,,14.50,true,1
+25,Crema de chocolate y nueces NuNuCa - Heli Süßwaren GmbH & Co. KG,,14.00,false,2
+26,Ositos de goma Gumbär - Heli Süßwaren GmbH & Co. KG,,31.23,true,2
+27,Chocolate Schoggi - Heli Süßwaren GmbH & Co. KG,,43.90,false,3
+28,Col fermentada Rössle - Plutzer Lebensmittelgroßmärkte AG,,45.60,true,3
+29,Salchicha Thüringer - Plutzer Lebensmittelgroßmärkte AG,,12.79,false,2
+30,Arenque blanco del noroeste - Nord-Ost-Fisch Handelsgesellschaft mbH,,25.89,true,1
+31,Queso gorgonzola Telino - Formaggi Fortini s.r.l.,,12.50,true,1
+32,Queso Mascarpone Fabioli - Formaggi Fortini s.r.l.,,32.00,true,1
+33,Queso de cabra - Norske Meierier,,22.50,false,1
+34,Cerveza Sasquatch - Bigfoot Breweries,,14.00,true,2
+35,Cerveza negra Steeleye - Bigfoot Breweries,,18.00,false,2
+36,Escabeche de arenque - Svensk Sjöföda AB,,19.00,true,3
+37,Salmón ahumado Gravad - Svensk Sjöföda AB,,26.00,true,3
+38,Vino Côte de Blaye - Aux joyeux ecclésiastiques,,23.50,true,2
+39,Licor verde Chartreuse - Aux joyeux ecclésiastiques,,18.00,false,1
+40,Carne de cangrejo de Boston - New England Seafood Cannery,,18.40,true,1
+41,Crema de almejas estilo Nueva Inglaterra - New England Seafood Cannery,,19.65,false,1
+42,Tallarines de Singapur - Leka Trading,,14.00,true,1
+43,Café de Malasia - Leka Trading,,46.00,false,2
+44,Azúcar negra Malacca - Leka Trading,,19.45,true,2
+45,Arenque ahumado - Lyngbysild,,19.50,true,3
+46,Arenque salado - Lyngbysild,,12.00,true,3
+47,Galletas Zaanse - Zaanse Snoepfabriek,,19.50,false,2
+48,Chocolate holandés - Zaanse Snoepfabriek,,12.75,true,1
+49,Regaliz - Karkki Oy,,20.00,false,1
+50,Chocolate blanco - Karkki Oy,,16.25,true,1
