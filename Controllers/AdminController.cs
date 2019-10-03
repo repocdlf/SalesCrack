@@ -11,17 +11,17 @@ namespace SalesCrack.Controllers
         // GET: Admin
         public ActionResult Products()
         {
-            return View("Admin");
+            return View("Products");
         }
 
         public ActionResult Edit()
         {
-            return View("Admin");
+            return View("Edit");
         }
 
         public ActionResult Load()
         {
-            return View("Admin");
+            return View("Load");
         }
     }
 }

@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace SalesCrack.Controllers
 {
-    public class UploadController : Controller
+    public class LoadController : Controller
     {
         // GET: Upload
         public ActionResult Upload()
         {
-            return View("Seller");
+            return View("Upload");
         }
     }
 }
