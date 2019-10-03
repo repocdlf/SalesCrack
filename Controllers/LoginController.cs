@@ -22,7 +22,7 @@ namespace SalesCrack.Controllers
             }
             if (modelo.username == "seller" && modelo.password == "1234")
             {
-                return RedirectToAction("Index", "Seller");
+                return RedirectToAction("Products", "Seller");
             }
             return View();
         }

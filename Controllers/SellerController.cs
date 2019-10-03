@@ -11,9 +11,14 @@ namespace SalesCrack.Controllers
     public class SellerController : Controller
     {
         // GET: Seller
-        public ActionResult Index()
+        public ActionResult Products()
         {
-            return View("Seller");
+            return View("Products");
+        }
+
+        public ActionResult Edit()
+        {
+            return View("Edit");
         }
         public ActionResult PaginaVendedor()
         {

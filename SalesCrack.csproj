@@ -169,10 +169,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Admin\Products.cshtml" />
-    <Content Include="Views\Seller\Seller.cshtml" />
-    <Content Include="Views\Shared\Navbar_Layout.cshtml" />
+    <Content Include="Views\Seller\Products.cshtml" />
+    <Content Include="Views\Shared\Admin_Navbar_Layout.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Load.cshtml" />
+    <Content Include="Views\Shared\Seller_Navbar_Layout.cshtml" />
+    <Content Include="Views\Seller\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
