@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace SalesCrack.Controllers
 {
     public class AdminController : Controller
     {
-        // GET: Admin
         public ActionResult Products()
         {
             return View("Products");
@@ -19,8 +19,28 @@ namespace SalesCrack.Controllers
             return View("Edit");
         }
 
-        public ActionResult Load()
+        public ActionResult Load(string type)
         {
+            
+            if ("sellers" == type)
+            {
+                ViewBag.id = type;
+                ViewBag.name = type;
+                ViewBag.label = "Sellers";
+            }
+            else if ("products" == type)
+            {
+                ViewBag.id = type;
+                ViewBag.name = type;
+                ViewBag.label = "Sellers";
+            }
+            else
+            {
+                ViewBag.id = "sellers";
+                ViewBag.name = "sellers";
+                ViewBag.label = "Sellers";
+            }
+            
             return View("Load");
         }
     }

@@ -1,5 +1,5 @@
-1,Té Dharamsala - Exotic Liquids,,18.00,true,1
-2,Cerveza tibetana Barley - Exotic Liquids,,19.00,true,2
+1,Te Dharamsala - Exotic Liquids,3,18.00,true,1
+2,Cerveza tibetana Barley - Exotic Liquids,5,19.00,true,2
 3,Sirope de regaliz - Exotic Liquids,,10.00,false,3
 4,Especias Cajun del chef Anton - New Orleans Cajun Delights,,22.00,true,2
 5,Mezcla Gumbo del chef Anton - New Orleans Cajun Delights,,21.35,false,3
