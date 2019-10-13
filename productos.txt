@@ -13,12 +13,12 @@
 13,Algas Konbu - Mayumi's,,16.00,false,1
 14,Cuajada de judías - Mayumi's,,23.25,true,1
 15,Salsa de soja baja en sodio - Mayumi's,,15.50,true,1
-16,Postre de merengue Pavlova - Pavlova, Ltd.,,17.45,true,2
-17,Cordero Alice Springs - Pavlova, Ltd.,,39.00,false,2
-18,Langostinos tigre Carnarvon - Pavlova, Ltd.,,62.50,true,3
-19,Pastas de té de chocolate - Specialty Biscuits, Ltd.,,19.20,false,3
-20,Mermelada de Sir Rodney's - Specialty Biscuits, Ltd.,,81.00,true,2
-21,Bollos de Sir Rodney's - Specialty Biscuits, Ltd.,,10.00,true,1
+16,Postre de merengue Pavlova - Pavlova Ltd.,,17.45,true,2
+17,Cordero Alice Springs - Pavlova Ltd.,,39.00,false,2
+18,Langostinos tigre Carnarvon - Pavlova Ltd.,,62.50,true,3
+19,Pastas de té de chocolate - Specialty Biscuits Ltd.,,19.20,false,3
+20,Mermelada de Sir Rodney's - Specialty Biscuits Ltd.,,81.00,true,2
+21,Bollos de Sir Rodney's - Specialty Biscuits Ltd.,,10.00,true,1
 22,Pan de centeno crujiente estilo Gustaf's - PB Knäckebröd AB,,21.00,true,1
 23,Pan fino - PB Knäckebröd AB,,19.00,false,1
 24,Refresco Guaraná Fantástica - Refrescos Americanas LTDA,,14.50,true,1

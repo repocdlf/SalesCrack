@@ -125,11 +125,14 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SellerController.cs" />
     <Compile Include="Controllers\LoadController.cs" />
+    <Compile Include="DBService\DBService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductSeller.cs" />
     <Compile Include="Models\Credential.cs" />
+    <Compile Include="Models\Seller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -32,7 +32,7 @@ namespace SalesCrack.Controllers
             {
                 ViewBag.id = type;
                 ViewBag.name = type;
-                ViewBag.label = "Sellers";
+                ViewBag.label = "Products";
             }
             else
             {

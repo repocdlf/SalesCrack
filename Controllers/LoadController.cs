@@ -1,5 +1,7 @@
-﻿using System;
+﻿using SalesCrack.Models;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -21,20 +23,29 @@ namespace SalesCrack.Controllers
                     while (line != null)
                     {
                         string[] arr = line.Split(',');
-                        if ("sellers"== type)
+                        if ("sellers" == type)
                         {
-                            string idVendedor = arr[0];
-                            string usr = arr[1];
-                            string pwd = arr[2];
+                            int idSeller = int.Parse(arr[0]);
+                            string usename = arr[1];
+                            string password = arr[2];
+                            Seller seller = new Seller(idSeller, usename, password);
+                            DBService.DBService.GetInstance().AddSeller(seller);
                         }
                         if ("products" == type)
                         {
-                            string idProducto = arr[0];
-                            string nombreProd = arr[1];
-                            string cantidad = arr[2];
-                            string precio = arr[3];
-                            string flagActivo = arr[4];
-                            string idSeller = arr[5];
+                            int code = int.Parse(arr[0]);
+                            string name = arr[1];
+                            int stock = int.TryParse(arr[2], out stock) ? int.Parse(arr[2]) : 1;
+                            double price = double.Parse(arr[3], CultureInfo.InvariantCulture);
+                            bool active = bool.Parse(arr[4]);
+                            int idSeller = int.Parse(arr[5]);
+                            Seller seller = DBService.DBService.GetInstance().FindSeller(idSeller);
+                            if (seller != null)
+                            {
+                                Product product = new Product(code, name, stock, price, active, seller);
+                                DBService.DBService.GetInstance().AddToStock(product);
+                            }
+
                         }
                         line = reader.ReadLine();
                     }
