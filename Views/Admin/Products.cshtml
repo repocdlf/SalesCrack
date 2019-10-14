@@ -1,11 +1,13 @@
-﻿
+﻿@model List<SalesCrack.Models.Product>
 @{
     ViewBag.Title = "Admin";
     Layout = "~/Views/Shared/Admin_Navbar_Layout.cshtml";
 }
 
 <h2>Productos</h2>
+<% foreach (var p in List){%>
 
+<%} %>
 <!--TODO: agregar funcionalidad-->
 <table class="table">
     <thead>

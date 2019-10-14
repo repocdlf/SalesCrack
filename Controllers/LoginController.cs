@@ -9,7 +9,6 @@ namespace SalesCrack.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
         public ActionResult Index()
         {
             return View("Login");
@@ -20,9 +19,10 @@ namespace SalesCrack.Controllers
             {
               return RedirectToAction("Products", "Admin");
             }
-            if (modelo.username == "seller" && modelo.password == "1234")
+            Seller seller = DBService.DBService.GetInstance().FindSellerByUsername(modelo.username);
+            if (seller != null && seller.Password == modelo.password)
             {
-                return RedirectToAction("Products", "Seller");
+                return RedirectToAction("Products", "Seller", seller);
             }
             return View();
         }

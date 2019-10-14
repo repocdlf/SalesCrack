@@ -1,13 +1,12 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Load";
     Layout = "~/Views/Shared/Admin_Navbar_Layout.cshtml";
 }
 
-    <h2>Load CSV @ViewBag.label</h2>
+<h2>Load CSV @ViewBag.label</h2>
 
 <form action="/Load/Upload" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="type" value="@ViewBag.name"/>
+    <input type="hidden" name="type" value="@ViewBag.name" />
     <label for="file">Filename:</label>
     <input type="file" name="@ViewBag.name" id="@ViewBag.id" />
     <input type="submit" name="submit" value="Submit" />

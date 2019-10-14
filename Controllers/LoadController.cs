@@ -39,7 +39,7 @@ namespace SalesCrack.Controllers
                             double price = double.Parse(arr[3], CultureInfo.InvariantCulture);
                             bool active = bool.Parse(arr[4]);
                             int idSeller = int.Parse(arr[5]);
-                            Seller seller = DBService.DBService.GetInstance().FindSeller(idSeller);
+                            Seller seller = DBService.DBService.GetInstance().FindSellerById(idSeller);
                             if (seller != null)
                             {
                                 Product product = new Product(code, name, stock, price, active, seller);

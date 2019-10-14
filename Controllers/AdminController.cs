@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalesCrack.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,17 +12,18 @@ namespace SalesCrack.Controllers
     {
         public ActionResult Products()
         {
-            return View("Products");
+            List<Product> lista = DBService.DBService.GetInstance().SearchAllProducts();
+            return View("Products",lista);
         }
 
         public ActionResult Edit()
         {
-            return View("Edit");
+            List<Product> lista = DBService.DBService.GetInstance().SearchAllProducts();
+            return View("Edit",lista);
         }
 
         public ActionResult Load(string type)
         {
-            
             if ("sellers" == type)
             {
                 ViewBag.id = type;
@@ -40,8 +42,8 @@ namespace SalesCrack.Controllers
                 ViewBag.name = "sellers";
                 ViewBag.label = "Sellers";
             }
-            
-            return View("Load");
+            List<Product> lista = DBService.DBService.GetInstance().SearchAllProducts();
+            return View("Load",lista);
         }
     }
 }

@@ -33,7 +33,7 @@ namespace SalesCrack.DBService
         {
             if (seller != null && seller.IdSeller > 0)
             {
-                Seller s = FindSeller(seller.IdSeller);
+                Seller s = FindSellerById(seller.IdSeller);
                 if (s != null)
                 {
                     s.ChangePassword(seller.Password);
@@ -102,7 +102,7 @@ namespace SalesCrack.DBService
         /**
          * Busca un vendedor en la base por el ID
          */
-        public Seller FindSeller(int idSeller)
+        public Seller FindSellerById(int idSeller)
         {
             Seller s = null;
             int i = 0;
@@ -129,6 +129,32 @@ namespace SalesCrack.DBService
                 }
             }
             return products;
+        }
+
+        public List<Product> SearchAllProducts()
+        {
+            List<Product> products = new List<Product>();
+            foreach (Product p in this.Stock)
+            {
+                products.Add(p);
+            }
+            return products;
+        }
+
+        public Seller FindSellerByUsername(string username)
+        {
+            Seller s = null;
+            int i = 0;
+            while (s == null && i < this.Sellers.Count)
+            {
+                Seller aux = this.Sellers.ElementAt(i);
+                if (aux.Usename == username)
+                {
+                    s = aux;
+                }
+                i++;
+            }
+            return s;
         }
     }
 }
