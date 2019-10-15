@@ -13,13 +13,13 @@ namespace SalesCrack.Controllers
         public ActionResult Products()
         {
             List<Product> lista = DBService.DBService.GetInstance().SearchAllProducts();
-            return View("Products",lista);
+            return View("Products", lista);
         }
 
         public ActionResult Edit()
         {
             List<Product> lista = DBService.DBService.GetInstance().SearchAllProducts();
-            return View("Edit",lista);
+            return View("Edit", lista);
         }
 
         public ActionResult Load(string type)
@@ -43,7 +43,7 @@ namespace SalesCrack.Controllers
                 ViewBag.label = "Sellers";
             }
             List<Product> lista = DBService.DBService.GetInstance().SearchAllProducts();
-            return View("Load",lista);
+            return View("Load", lista);
         }
     }
 }
