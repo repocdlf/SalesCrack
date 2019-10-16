@@ -4,8 +4,32 @@
     Layout = "~/Views/Shared/Admin_Navbar_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Edit Products</h2>
 
-<% foreach (var p in List){%>
-
-<%} %>  
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Price</th>
+            <th scope="col">Active</th>
+            <th scope="col">Seller name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <th scope="row">@p.Code</th>
+                <td>@p.Name</td>
+                <td>@p.Stock</td>
+                <td>@p.Price</td>
+                <td>
+                    <input id="test" type="checkbox" @if(p.Active){ <text>checked</text> } data-toggle="toggle">
+                </td>
+                <td>@p.Seller.Usename</td>
+            </tr>
+        }
+    </tbody>
+</table>
