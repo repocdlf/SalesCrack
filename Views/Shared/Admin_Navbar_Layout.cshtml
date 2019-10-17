@@ -7,7 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body> 
+<body>
     <div class="container body-content">
         <div class="row">
             <div class="col-sm-3">
@@ -16,7 +16,7 @@
                         <img src="https://image-placeholder.com/images/actual-size/75x75.png" />
                     </div>
                     <div class="col-sm-6">
-                        <button type="button" class="btn btn-primary">Log out</button>
+                        <button type="button" class="btn btn-primary" onclick="logout()">Log out</button>
                     </div>
                 </div>
                 <hr />
@@ -53,5 +53,13 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+ <script>
+     function logout(){
+
+         location.href = "/Login/Logout";
+     }
+ </script>
+    
 </body>
 </html>

@@ -26,6 +26,10 @@ namespace SalesCrack.Controllers
             }
             return View();
         }
+        public ActionResult Logout()
+        {
+            return View("Login");
+        }
     }
 
     
