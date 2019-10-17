@@ -1,11 +1,28 @@
 ﻿@model List<SalesCrack.Models.Product>
 @{
-  ViewBag.Title = "SellerView";
-  Layout = "~/Views/Shared/Seller_Navbar_Layout.cshtml";
+    ViewBag.Title = "SellerView";
+    Layout = "~/Views/Shared/Seller_Navbar_Layout.cshtml";
 }
 
-<h2>Vista de Lista de Productos</h2>
-
-<% foreach (var p in List){%>
-
-<%} %>
+<h2>Products For Sale</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <th scope="row">@p.Code</th>
+                <td>@p.Name</td>
+                <td>@p.Stock</td>
+                <td>@p.Price</td>
+            </tr>
+        }
+    </tbody>
+</table>

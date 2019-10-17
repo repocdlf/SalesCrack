@@ -4,8 +4,27 @@
   Layout = "~/Views/Shared/Seller_Navbar_Layout.cshtml";
 }
 
-<h2>Vista de Productos para Vender</h2>
-
-<% foreach (var p in List){%>
-
-<%} %>
+<h2>Sell products</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Price</th>
+            <th scope="col">Sell</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <th scope="row">@p.Code</th>
+                <td>@p.Name</td>
+                <td>@p.Stock</td>
+                <td>@p.Price</td>
+                <td><button type="button" class="btn btn-primary">Sell</button></td>
+            </tr>
+        }
+    </tbody>
+</table>

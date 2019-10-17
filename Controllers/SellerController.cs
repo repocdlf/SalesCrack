@@ -12,17 +12,14 @@ namespace SalesCrack.Controllers
     {
         public ActionResult Products()
         {
-            return View("Products");
+            List<Product> lista = DBService.DBService.GetInstance().SearchAllProducts();
+            return View("Products", lista);
         }
 
         public ActionResult Edit()
         {
-            return View("Edit");
-        }
-        public ActionResult PaginaVendedor()
-        {
             List<Product> lista = DBService.DBService.GetInstance().SearchAllProducts();
-            return View("Seller", lista);
+            return View("Edit", lista);
         }
     }
 }
