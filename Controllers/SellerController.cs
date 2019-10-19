@@ -13,12 +13,16 @@ namespace SalesCrack.Controllers
         public ActionResult Products()
         {
             List<Product> lista = DBService.DBService.GetInstance().SearchAllProducts();
+            //int idSeller = 0;
+            //List<Product> lista = DBService.DBService.GetInstance().SearchProductsBySeller(isSeller);
             return View("Products", lista);
         }
 
         public ActionResult Edit()
         {
             List<Product> lista = DBService.DBService.GetInstance().SearchAllProducts();
+            //int idSeller = 0;
+            //List<Product> lista = DBService.DBService.GetInstance().SearchProductsBySeller(isSeller);
             return View("Edit", lista);
         }
     }

@@ -7,7 +7,7 @@ namespace SalesCrack.Models
 {
     public class Product
     {
-        public int Code { get; set; }
+        public int IdProduct { get; set; }
         public string Name { get; set; }
         public int Stock { get; set; }
         public double Price { get; set; }
@@ -16,11 +16,16 @@ namespace SalesCrack.Models
 
         public Product(int code, string name, int stock, double price, bool active, Seller seller)
         {
-            this.Code = code;
+            this.IdProduct = code;
             this.Name = name;
             this.Stock = stock;
             this.Price = price;
             this.Active = active;
+            this.Seller = seller;
+        }
+
+        public void SetNewSeller(Seller seller)
+        {
             this.Seller = seller;
         }
     }
