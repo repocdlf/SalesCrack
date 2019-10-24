@@ -13,21 +13,32 @@ namespace SalesCrack.Controllers
         {
             return View("Login");
         }
-        public ActionResult Login (Credential modelo)
+        public ActionResult Login (Credential credent)
         {
-            if (modelo.username=="admin"&&modelo.password=="1234")
+            if (credent.username=="admin"&& credent.password=="1234")
             {
-              return RedirectToAction("Products", "Admin");
+                if (System.Web.HttpContext.Current.Cache["current_user"] == null)
+                {
+                    System.Web.HttpContext.Current.Cache["current_user"] = credent;
+                }
+                Session["current_user"] = credent;
+                return RedirectToAction("Products", "Admin");
             }
-            Seller seller = DBService.DBService.GetInstance().FindSellerByUsername(modelo.username);
-            if (seller != null && seller.Password == modelo.password)
+            Seller seller = DBService.DBService.GetInstance().FindSellerByUsername(credent.username);
+            if (seller != null && seller.Password == credent.password)
             {
+                if (System.Web.HttpContext.Current.Cache["current_user"] == null)
+                {
+                    System.Web.HttpContext.Current.Cache["current_user"] = credent;
+                }
+                Session["current_user"] = credent;
                 return RedirectToAction("Products", "Seller", seller);
             }
             return View();
         }
         public ActionResult Logout()
         {
+            System.Web.HttpContext.Current.Cache.Remove("current_user");
             return View("Login");
         }
     }

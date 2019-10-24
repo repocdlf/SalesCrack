@@ -13,6 +13,11 @@ namespace SalesCrack.Controllers
     {
         public ActionResult Upload(string type)
         {
+            Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
+            if (currentUser == null || currentUser.username != "admin")
+            {
+                return RedirectToAction("Login", "Login");
+            }
             foreach (string file in Request.Files)
             {
                 HttpFileCollectionBase hpf = Request.Files;
@@ -51,7 +56,8 @@ namespace SalesCrack.Controllers
                     }
                 }
             }
-            return RedirectToAction("Load", "Admin");
+            //return RedirectToAction("Load", "Admin");
+            return RedirectToAction("Products", "Admin");
         }
     }
 }
