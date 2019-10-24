@@ -12,17 +12,25 @@ namespace SalesCrack.Controllers
     {
         public ActionResult Products()
         {
-            List<Product> lista = DBService.DBService.GetInstance().SearchAllProducts();
-            //int idSeller = 0;
-            //List<Product> lista = DBService.DBService.GetInstance().SearchProductsBySeller(isSeller);
+            Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
+            if (currentUser == null || currentUser.username == "admin")
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            Seller seller = DBService.DBService.GetInstance().FindSellerByUsername(currentUser.username);
+            List<Product> lista = DBService.DBService.GetInstance().SearchProductsBySeller(seller.IdSeller);
             return View("Products", lista);
         }
 
         public ActionResult Edit()
         {
-            List<Product> lista = DBService.DBService.GetInstance().SearchAllProducts();
-            //int idSeller = 0;
-            //List<Product> lista = DBService.DBService.GetInstance().SearchProductsBySeller(isSeller);
+            Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
+            if (currentUser == null || currentUser.username == "admin")
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            Seller seller = DBService.DBService.GetInstance().FindSellerByUsername(currentUser.username);
+            List<Product> lista = DBService.DBService.GetInstance().SearchProductsBySeller(seller.IdSeller);
             return View("Edit", lista);
         }
     }

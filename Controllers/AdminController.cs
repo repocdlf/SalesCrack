@@ -12,18 +12,33 @@ namespace SalesCrack.Controllers
     {
         public ActionResult Products()
         {
+            Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
+            if (currentUser == null || currentUser.username != "admin")
+            {
+                return RedirectToAction("Login", "Login");
+            }
             List<Product> lista = DBService.DBService.GetInstance().SearchAllProducts();
             return View("Products", lista);
         }
 
         public ActionResult Edit()
         {
+            Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
+            if (currentUser == null || currentUser.username != "admin")
+            {
+                return RedirectToAction("Login", "Login");
+            }
             List<Product> lista = DBService.DBService.GetInstance().SearchAllProducts();
             return View("Edit", lista);
         }
 
         public ActionResult Load(string type)
         {
+            Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
+            if (currentUser == null || currentUser.username != "admin")
+            {
+                return RedirectToAction("Login", "Login");
+            }
             if ("sellers" == type)
             {
                 ViewBag.id = type;
