@@ -7,15 +7,18 @@ function logout() {
 //Scripts end point
 $(".button-active-status").on('click', function () {
     let product = $(this).find("input");
-    console.log(product)
     $.ajax({
-        url: '/Admin/DoChangeProductStatus?idProduct=1&Active=True',
+        url: '/Admin/DoChangeProductStatus?idProduct=' + product.attr('id'),
         success: function (respuesta) {
-            console.log(respuesta);
-
+            console.log("Cambio de estado exitoso");
         },
         error: function () {
             console.log("No se ha podido obtener la información");
         }
     });
 });
+
+//Todo
+function vender() {
+  //  location.href = "/Seller/Sell?"idProdut;
+}
