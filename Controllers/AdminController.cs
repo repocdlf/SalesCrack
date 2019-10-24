@@ -46,6 +46,14 @@ namespace SalesCrack.Controllers
             return View("Load", lista);
         }
 
+        //Update status active or inactive in a product
+        //Todo complete this action
+        public void DoChangeProductStatus(int idProduct, bool active)
+        {
+            Console.WriteLine("Product id: " + idProduct + " Status: " + active);
 
+            DBService.DBService.GetInstance().FindProductInStock(idProduct).Active = active;
+
+        }
     }
 }
