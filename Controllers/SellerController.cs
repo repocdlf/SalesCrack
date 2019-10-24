@@ -33,5 +33,22 @@ namespace SalesCrack.Controllers
             List<Product> lista = DBService.DBService.GetInstance().SearchProductsBySeller(seller.IdSeller);
             return View("Edit", lista);
         }
+
+        public ActionResult Sell(int idProduct)
+        {
+            Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
+            if (currentUser == null || currentUser.username == "admin")
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            Product product = DBService.DBService.GetInstance().FindProductInStock(idProduct);
+
+            Seller seller = DBService.DBService.GetInstance().FindSellerById(product.Seller.IdSeller);
+            DBService.DBService.GetInstance().DoSell(idProduct, seller.IdSeller);
+            List<Product> lista = DBService.DBService.GetInstance().SearchProductsBySeller(seller.IdSeller);
+            return View("Edit", lista);
+        }
+
+
     }
 }

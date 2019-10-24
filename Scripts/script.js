@@ -19,6 +19,6 @@ $(".button-active-status").on('click', function () {
 });
 
 //Todo
-function vender() {
-  //  location.href = "/Seller/Sell?"idProdut;
+function vender(idProduct) {
+    location.href = "/Seller/Sell?idProduct=" + idProduct;
 }
