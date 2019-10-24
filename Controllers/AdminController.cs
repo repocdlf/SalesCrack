@@ -13,6 +13,7 @@ namespace SalesCrack.Controllers
         public ActionResult Products()
         {
             Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
+            //Credential currentUser = (Credential)Session["current_user"];
             if (currentUser == null || currentUser.username != "admin")
             {
                 return RedirectToAction("Login", "Login");
@@ -24,6 +25,7 @@ namespace SalesCrack.Controllers
         public ActionResult Edit()
         {
             Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
+            //Credential currentUser = (Credential)Session["current_user"];
             if (currentUser == null || currentUser.username != "admin")
             {
                 return RedirectToAction("Login", "Login");
@@ -35,6 +37,7 @@ namespace SalesCrack.Controllers
         public ActionResult Load(string type)
         {
             Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
+            //Credential currentUser = (Credential)Session["current_user"];
             if (currentUser == null || currentUser.username != "admin")
             {
                 return RedirectToAction("Login", "Login");
@@ -64,11 +67,13 @@ namespace SalesCrack.Controllers
         //Cambia el estado de un producto a Activado o Desactivado
         public void DoChangeProductStatus(int idProduct)
         {
-
-            Product product = DBService.DBService.GetInstance().FindProductInStock(idProduct);
-
-            product.Active = !product.Active;
-
+            Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
+            //Credential currentUser = (Credential)Session["current_user"];
+            if (currentUser != null && currentUser.username == "admin")
+            {
+                Product product = DBService.DBService.GetInstance().FindProductInStock(idProduct);
+                product.Active = !product.Active;
+            }
         }
     }
 }

@@ -74,7 +74,7 @@ namespace SalesCrack.DBService
         {
             //Buscar en el stock, decrementar, remover del stock si queda cero, agregar a la lista de vendidos
             Product p = this.FindProductInStock(idProduct);
-            Seller s = this.FindSellerById(idProduct);
+            Seller s = this.FindSellerById(idSeller);
             if (p != null && s != null)
             {
                 p.Stock--;
@@ -130,7 +130,7 @@ namespace SalesCrack.DBService
             List<Product> products = new List<Product>();
             foreach (Product p in this.Stock)
             {
-                if (p.Seller.IdSeller == idSeller)
+                if (p.Seller.IdSeller == idSeller && p.Active)
                 {
                     products.Add(p);
                 }

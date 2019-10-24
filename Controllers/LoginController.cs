@@ -11,6 +11,8 @@ namespace SalesCrack.Controllers
     {
         public ActionResult Index()
         {
+            System.Web.HttpContext.Current.Cache.Remove("current_user");
+            Session.Remove("current_user");
             return View("Login");
         }
         public ActionResult Login (Credential credent)
@@ -20,8 +22,8 @@ namespace SalesCrack.Controllers
                 if (System.Web.HttpContext.Current.Cache["current_user"] == null)
                 {
                     System.Web.HttpContext.Current.Cache["current_user"] = credent;
+                    Session["current_user"] = credent;
                 }
-                Session["current_user"] = credent;
                 return RedirectToAction("Products", "Admin");
             }
             Seller seller = DBService.DBService.GetInstance().FindSellerByUsername(credent.username);
@@ -30,8 +32,8 @@ namespace SalesCrack.Controllers
                 if (System.Web.HttpContext.Current.Cache["current_user"] == null)
                 {
                     System.Web.HttpContext.Current.Cache["current_user"] = credent;
+                    Session["current_user"] = credent;
                 }
-                Session["current_user"] = credent;
                 return RedirectToAction("Products", "Seller", seller);
             }
             return View();
@@ -39,9 +41,8 @@ namespace SalesCrack.Controllers
         public ActionResult Logout()
         {
             System.Web.HttpContext.Current.Cache.Remove("current_user");
+            Session.Remove("current_user");
             return View("Login");
         }
     }
-
-    
 }

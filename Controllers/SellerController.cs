@@ -13,6 +13,7 @@ namespace SalesCrack.Controllers
         public ActionResult Products()
         {
             Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
+            //Credential currentUser = (Credential)Session["current_user"];
             if (currentUser == null || currentUser.username == "admin")
             {
                 return RedirectToAction("Login", "Login");
@@ -25,6 +26,7 @@ namespace SalesCrack.Controllers
         public ActionResult Edit()
         {
             Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
+            //Credential currentUser = (Credential)Session["current_user"];
             if (currentUser == null || currentUser.username == "admin")
             {
                 return RedirectToAction("Login", "Login");
@@ -37,14 +39,17 @@ namespace SalesCrack.Controllers
         public ActionResult Sell(int idProduct)
         {
             Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
+            //Credential currentUser = (Credential)Session["current_user"];
             if (currentUser == null || currentUser.username == "admin")
             {
                 return RedirectToAction("Login", "Login");
             }
+            Seller seller = DBService.DBService.GetInstance().FindSellerByUsername(currentUser.username);
             Product product = DBService.DBService.GetInstance().FindProductInStock(idProduct);
-
-            Seller seller = DBService.DBService.GetInstance().FindSellerById(product.Seller.IdSeller);
-            DBService.DBService.GetInstance().DoSell(idProduct, seller.IdSeller);
+            if (product != null && product.Seller.IdSeller == seller.IdSeller)
+            {
+                DBService.DBService.GetInstance().DoSell(idProduct, seller.IdSeller);
+            }
             List<Product> lista = DBService.DBService.GetInstance().SearchProductsBySeller(seller.IdSeller);
             return View("Edit", lista);
         }
