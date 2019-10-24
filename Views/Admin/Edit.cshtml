@@ -26,7 +26,9 @@
                 <td>@p.Stock</td>
                 <td>@p.Price</td>
                 <td>
-                    <input id="test" type="checkbox" @if(p.Active){ <text>checked</text> } data-toggle="toggle">
+                    <span class="button-active-status">
+                        <input id="@p.Code" value="@p.Active.ToString()"  type="checkbox" @if(p.Active){ <text>checked</text> } data-toggle="toggle">
+                    </span>
                 </td>
                 <td>@p.Seller.Usename</td>
             </tr>

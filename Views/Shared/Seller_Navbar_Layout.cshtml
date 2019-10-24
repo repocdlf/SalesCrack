@@ -16,7 +16,7 @@
                         <img src="https://image-placeholder.com/images/actual-size/75x75.png" />
                     </div>
                     <div class="col-sm-6">
-                        <button type="button" class="btn btn-primary"  onclick="logout()">Log out</button>
+                        <button type="button" class="btn btn-primary" onclick="logout()">Log out</button>
                     </div>
                 </div>
                 <hr />
@@ -47,11 +47,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
-    <script>
-        function logout() {
-            location.href = "/Login/Logout";
-        }
-    </script>
+    <script src="~/Scripts/script.js"></script>
 </body>
 </html>

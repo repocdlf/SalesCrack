@@ -45,5 +45,7 @@ namespace SalesCrack.Controllers
             List<Product> lista = DBService.DBService.GetInstance().SearchAllProducts();
             return View("Load", lista);
         }
+
+
     }
 }
