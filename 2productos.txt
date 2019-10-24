@@ -1,11 +1,11 @@
-1,Te Dharamsala - Exotic Liquids,3,18.00,true,1
+1,Te Dharamsala - Exotic Liquids,3,18.01,true,1
 2,Cerveza tibetana Barley - Exotic Liquids,5,19.00,true,2
 3,Sirope de regaliz - Exotic Liquids,5,10.00,false,3
 4,Especias Cajun del chef Anton - New Orleans Cajun Delights,89,22.00,true,2
 5,Mezcla Gumbo del chef Anton - New Orleans Cajun Delights,6,21.35,false,3
 6,Mermelada de grosellas de la abuela - Grandma Kellys Homestead,6,25.00,true,1
-7,Peras secas orgánicas del tio Bob - Grandma Kellys Homestead,8,30.00,true,2
-8,Salsa de arándanos Northwoods - Grandma Kellys Homestead,12,40.00,true,1
+7,Peras secas organicas del tio Bob - Grandma Kellys Homestead,8,30.00,true,2
+8,Salsa de arandanos Northwoods - Grandma Kellys Homestead,12,40.00,true,1
 9,Buey Mishi Kobe - Tokyo Traders,48,97.00,false,1
 10,Pez espada - Tokyo Traders,8,31.00,true,2
 11,Queso Cabrales - Cooperativa de Quesos Las Cabras,45,21.00,false,3
@@ -22,7 +22,7 @@
 22,Pan de centeno crujiente estilo Gustafs - PB Knackebod AB,52,21.00,true,1
 23,Pan fino - PB Knackebrod AB,41,19.00,false,1
 24,Refresco Guarana Fantastica - Refrescos Americanas LTDA,10,14.50,true,1
-25,Crema de chocolate y nueces NuNuCa - Heli Süßwaren GmbH & Co. KG,52,14.00,false,2
+25,Crema de chocolate y nueces NuNuCa - Heli Suwaren GmbH & Co. KG,52,14.00,false,2
 26,Ositos de goma Gumbar - Heli Saren GmbH & Co. KG,45,31.23,true,2
 27,Chocolate Schoggi - Heli Saren GmbH & Co. KG,54,43.90,false,3
 28,Col fermentada Rossle - Plutzer Lebensmittelgrorkte AG,,45.60,true,3
@@ -41,7 +41,7 @@
 41,Crema de almejas estilo Nueva Inglaterra - New England Seafood Cannery,34,19.65,false,1
 42,Tallarines de Singapur - Leka Trading,52,14.00,true,1
 43,Cafe de Malasia - Leka Trading,83,46.00,false,2
-44,Azcar negra Malacca - Leka Trading,654,19.45,true,2
+44,Azucar negra Malacca - Leka Trading,654,19.45,true,2
 45,Arenque ahumado - Lyngbysild,54,19.50,true,3
 46,Arenque salado - Lyngbysild,54,12.00,true,3
 47,Galletas Zaanse - Zaanse Snoepfabriek,25,19.50,false,2

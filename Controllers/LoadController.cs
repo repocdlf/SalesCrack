@@ -33,7 +33,7 @@ namespace SalesCrack.Controllers
                         }
                         if ("products" == type)
                         {
-                            int code = int.Parse(arr[0]);
+                            int idProduct = int.Parse(arr[0]);
                             string name = arr[1];
                             int stock = int.TryParse(arr[2], out stock) ? int.Parse(arr[2]) : 1;
                             double price = double.Parse(arr[3], CultureInfo.InvariantCulture);
@@ -42,7 +42,7 @@ namespace SalesCrack.Controllers
                             Seller seller = DBService.DBService.GetInstance().FindSellerById(idSeller);
                             if (seller != null)
                             {
-                                Product product = new Product(code, name, stock, price, active, seller);
+                                Product product = new Product(idProduct, name, stock, price, active, seller);
                                 DBService.DBService.GetInstance().AddToStock(product);
                             }
 

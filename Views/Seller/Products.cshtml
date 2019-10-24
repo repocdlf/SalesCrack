@@ -3,13 +3,12 @@
     ViewBag.Title = "SellerView";
     Layout = "~/Views/Shared/Seller_Navbar_Layout.cshtml";
 }
-
 <h2>Products For Sale</h2>
 <table class="table">
     <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Product Name</th>
+            <th scope="col">Product</th>
             <th scope="col">Stock</th>
             <th scope="col">Price</th>
         </tr>
@@ -18,7 +17,7 @@
         @foreach (var p in Model)
         {
             <tr>
-                <th scope="row">@p.Code</th>
+                <th scope="row">@p.IdProduct</th>
                 <td>@p.Name</td>
                 <td>@p.Stock</td>
                 <td>@p.Price</td>

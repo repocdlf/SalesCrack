@@ -7,30 +7,26 @@ namespace SalesCrack.Models
 {
     public class ProductSeller
     {
-        public int ID
+        public int IdProduct
         {
             get;
             set;
         }
-        public string NomProduct
+        public int IdSeller
         {
             get;
             set;
         }
-        public string UserID
+        public double Price
         {
             get;
             set;
         }
-        public float Precio
+        public ProductSeller(int idProduct, int idSeller, double price)
         {
-            get;
-            set;
-        }
-        public int Stock
-        {
-            get;
-            set;
+            this.IdProduct = idProduct;
+            this.IdSeller = idSeller;
+            this.Price = price;
         }
     }
 }

@@ -8,9 +8,9 @@ namespace SalesCrack.DBService
 {
     public class DBService
     {
-        private List<Seller> Sellers { get; }
+        private List<Seller> Sellers { get; set; }
         private List<Product> Stock { get; set; }
-        private List<Product> Sold { get; set; }
+        private List<ProductSeller> Sold { get; set; }
 
         private static DBService Instance = new DBService();
 
@@ -18,7 +18,7 @@ namespace SalesCrack.DBService
         {
             this.Sellers = new List<Seller>();
             this.Stock = new List<Product>();
-            this.Sold = new List<Product>();
+            this.Sold = new List<ProductSeller>();
         }
 
         public static DBService GetInstance()
@@ -29,18 +29,18 @@ namespace SalesCrack.DBService
         /**
          * Agrega un vendedor a la base de vendedores. En caso de que el vendedor ya exista actualiza el password
          */
-        public void AddSeller(Seller seller)
+        public void AddSeller(Seller newSeller)
         {
-            if (seller != null && seller.IdSeller > 0)
+            if (newSeller != null && newSeller.IdSeller > 0)
             {
-                Seller s = FindSellerById(seller.IdSeller);
-                if (s != null)
+                Seller existingSeller = FindSellerById(newSeller.IdSeller);
+                if (existingSeller != null)
                 {
-                    s.ChangePassword(seller.Password);
+                    existingSeller.ChangePassword(newSeller.Password);
                 }
                 else
                 {
-                    this.Sellers.Add(seller);
+                    this.Sellers.Add(newSeller);
                 }
             }
         }
@@ -48,55 +48,62 @@ namespace SalesCrack.DBService
         /**
          * Agrega el producto en la base de productos. En caso que ya este incrementa el stock
          */
-        public void AddToStock(Product product)
+        public void AddToStock(Product newProduct)
         {
-            //Si el producto ya existe solo debe incrementar el stock, primero se debe hacer una busqueda
-            Product p = this.FindProductInStock(product.Code);
-            if (p != null)
+            //Si el producto ya existe solo debe incrementar el stock y actualizar los datos del producto.
+            //Primero se debe hacer una busqueda para validar si el producto ya existe en la base
+            Product existingProduct = this.FindProductInStock(newProduct.IdProduct);
+            if (existingProduct != null)
             {
-                p.Stock += product.Stock;
+                existingProduct.Name = newProduct.Name;
+                existingProduct.Stock += newProduct.Stock;
+                existingProduct.Price = newProduct.Price;
+                existingProduct.Active = newProduct.Active;
+                existingProduct.Seller = DBService.GetInstance().FindSellerById(newProduct.Seller.IdSeller);
             }
             else
             {
-                this.Stock.Add(product);
+                this.Stock.Add(newProduct);
             }
         }
 
         /**
          * Realiza la venta del producto a nivel de datos. Decrementa el stock del producto o lo elimina si correcponde
          */
-        public void AddToSold(Product product)
+        public void DoSell(int idProduct, int idSeller)
         {
             //Buscar en el stock, decrementar, remover del stock si queda cero, agregar a la lista de vendidos
-            Product p = this.FindProductInStock(product.Code);
-            if (p != null)
+            Product p = this.FindProductInStock(idProduct);
+            Seller s = this.FindSellerById(idProduct);
+            if (p != null && s != null)
             {
                 p.Stock--;
                 if (p.Stock == 0)
                 {
-                    this.Stock.Remove(product);
+                    this.Stock.Remove(p);
                 }
+                ProductSeller ps = new ProductSeller(idProduct, idSeller, p.Price);
+                this.Sold.Add(ps);
             }
-            this.Sold.Add(product);
         }
 
         /**
          * Busca un producto en el stock por el codigo
          */
-        public Product FindProductInStock(int code)
+        public Product FindProductInStock(int idProduct)
         {
-            Product p = null;
+            Product product = null;
             int i = 0;
-            while (p == null && i < this.Stock.Count)
+            while (product == null && i < this.Stock.Count)
             {
                 Product aux = this.Stock.ElementAt(i);
-                if (aux.Code == code)
+                if (aux.IdProduct == idProduct)
                 {
-                    p = aux;
+                    product = aux;
                 }
                 i++;
             }
-            return p;
+            return product;
         }
 
         /**
