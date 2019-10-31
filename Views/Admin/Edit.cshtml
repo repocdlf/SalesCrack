@@ -4,32 +4,43 @@
     Layout = "~/Views/Shared/Admin_Navbar_Layout.cshtml";
 }
 <h2>Edit Products</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Product</th>
-            <th scope="col">Stock</th>
-            <th scope="col">Price</th>
-            <th scope="col">Active</th>
-            <th scope="col">Seller</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var p in Model)
-        {
-            <tr>
-                <th scope="row">@p.IdProduct</th>
-                <td>@p.Name</td>
-                <td>@p.Stock</td>
-                <td>@p.Price</td>
-                <td>
-                    <span class="button-active-status">
-                        <input id="@p.IdProduct" type="checkbox" @if(p.Active){ <text>checked</text> } data-toggle="toggle">
-                    </span>
-                </td>
-                <td>@p.Seller.Usename</td>
-            </tr>
+@{
+    if (Model.Count == 0)
+    {
+        <div class="alert alert-warning" role="alert">No products were loaded</div>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Active</th>
+                    <th scope="col">Seller</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var p in Model)
+                {
+                    <tr>
+                        <th scope="row">@p.IdProduct</th>
+                        <td>@p.Name</td>
+                        <td>@p.Stock</td>
+                        <td>@p.Price</td>
+                        <td>
+                            <span class="button-active-status">
+                                <input id="@p.IdProduct" type="checkbox" @if (p.Active)
+                                { <text> checked</text> } data-toggle="toggle">
+                            </span>
+                        </td>
+                        <td>@p.Seller.Usename</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
         }
-    </tbody>
-</table>
+    }
