@@ -75,5 +75,16 @@ namespace SalesCrack.Controllers
                 product.Active = !product.Active;
             }
         }
+        public ActionResult Sellers()
+        {
+            Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
+            //Credential currentUser = (Credential)Session["current_user"];
+            if (currentUser == null || currentUser.username != "admin")
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            List<Seller> lista = DBService.DBService.GetInstance().SearchAllSellers();
+            return View("Sellers", lista);
+        }
     }
 }

@@ -163,5 +163,14 @@ namespace SalesCrack.DBService
             }
             return s;
         }
+        public List<Seller> SearchAllSellers()
+        {
+            List<Seller> Sellers = new List<Seller>();
+            foreach (Seller s in this.Sellers)
+            {
+                Sellers.Add(s);
+            }
+            return Sellers;
+        }
     }
 }

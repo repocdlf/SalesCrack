@@ -190,6 +190,7 @@
     <Content Include="Views\Admin\Load.cshtml" />
     <Content Include="Views\Shared\Seller_Navbar_Layout.cshtml" />
     <Content Include="Views\Seller\Edit.cshtml" />
+    <Content Include="Views\Admin\Sellers.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
