@@ -1,4 +1,5 @@
 ﻿using SalesCrack.Models;
+using SalesCrack.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,37 +12,27 @@ namespace SalesCrack.Controllers
     {
         public ActionResult Index()
         {
-            System.Web.HttpContext.Current.Cache.Remove("current_user");
-            Session.Remove("current_user");
+            SessionManager.RemoveCurrentUser();
             return View("Login");
         }
         public ActionResult Login (Credential credent)
         {
             if (credent.username=="admin"&& credent.password=="1234")
             {
-                if (System.Web.HttpContext.Current.Cache["current_user"] == null)
-                {
-                    System.Web.HttpContext.Current.Cache["current_user"] = credent;
-                    Session["current_user"] = credent;
-                }
+                SessionManager.SetCurrentUser(credent);
                 return RedirectToAction("Products", "Admin");
             }
             Seller seller = DBService.DBService.GetInstance().FindSellerByUsername(credent.username);
             if (seller != null && seller.Password == credent.password)
             {
-                if (System.Web.HttpContext.Current.Cache["current_user"] == null)
-                {
-                    System.Web.HttpContext.Current.Cache["current_user"] = credent;
-                    Session["current_user"] = credent;
-                }
+                SessionManager.SetCurrentUser(credent);
                 return RedirectToAction("Products", "Seller", seller);
             }
             return View();
         }
         public ActionResult Logout()
         {
-            System.Web.HttpContext.Current.Cache.Remove("current_user");
-            Session.Remove("current_user");
+            SessionManager.RemoveCurrentUser();
             return View("Login");
         }
     }

@@ -1,4 +1,5 @@
 ﻿using SalesCrack.Models;
+using SalesCrack.Utility;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,8 +13,7 @@ namespace SalesCrack.Controllers
     {
         public ActionResult Products()
         {
-            Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
-            //Credential currentUser = (Credential)Session["current_user"];
+            Credential currentUser = SessionManager.GetCurrentUser();
             if (currentUser == null || currentUser.username == "admin")
             {
                 return RedirectToAction("Login", "Login");
@@ -25,8 +25,7 @@ namespace SalesCrack.Controllers
 
         public ActionResult Edit()
         {
-            Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
-            //Credential currentUser = (Credential)Session["current_user"];
+            Credential currentUser = SessionManager.GetCurrentUser();
             if (currentUser == null || currentUser.username == "admin")
             {
                 return RedirectToAction("Login", "Login");
@@ -38,8 +37,7 @@ namespace SalesCrack.Controllers
 
         public ActionResult Sell(int idProduct)
         {
-            Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
-            //Credential currentUser = (Credential)Session["current_user"];
+            Credential currentUser = SessionManager.GetCurrentUser();
             if (currentUser == null || currentUser.username == "admin")
             {
                 return RedirectToAction("Login", "Login");

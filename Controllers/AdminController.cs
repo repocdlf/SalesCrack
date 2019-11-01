@@ -1,4 +1,5 @@
 ﻿using SalesCrack.Models;
+using SalesCrack.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,7 @@ namespace SalesCrack.Controllers
     {
         public ActionResult Products()
         {
-            Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
-            //Credential currentUser = (Credential)Session["current_user"];
+            Credential currentUser = SessionManager.GetCurrentUser();
             if (currentUser == null || currentUser.username != "admin")
             {
                 return RedirectToAction("Login", "Login");
@@ -24,8 +24,7 @@ namespace SalesCrack.Controllers
 
         public ActionResult Edit()
         {
-            Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
-            //Credential currentUser = (Credential)Session["current_user"];
+            Credential currentUser = SessionManager.GetCurrentUser();
             if (currentUser == null || currentUser.username != "admin")
             {
                 return RedirectToAction("Login", "Login");
@@ -34,30 +33,29 @@ namespace SalesCrack.Controllers
             return View("Edit", lista);
         }
 
-        public ActionResult Load(string type)
+        public ActionResult Load(string view)
         {
-            Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
-            //Credential currentUser = (Credential)Session["current_user"];
+            Credential currentUser = SessionManager.GetCurrentUser();
             if (currentUser == null || currentUser.username != "admin")
             {
                 return RedirectToAction("Login", "Login");
             }
-            if ("sellers" == type)
+            if ("Sellers" == view)
             {
-                ViewBag.id = type;
-                ViewBag.name = type;
+                ViewBag.id = view;
+                ViewBag.name = view;
                 ViewBag.label = "Sellers";
             }
-            else if ("products" == type)
+            else if ("Products" == view)
             {
-                ViewBag.id = type;
-                ViewBag.name = type;
+                ViewBag.id = view;
+                ViewBag.name = view;
                 ViewBag.label = "Products";
             }
             else
             {
-                ViewBag.id = "sellers";
-                ViewBag.name = "sellers";
+                ViewBag.id = "Sellers";
+                ViewBag.name = "Sellers";
                 ViewBag.label = "Sellers";
             }
             List<Product> lista = DBService.DBService.GetInstance().SearchAllProducts();
@@ -67,8 +65,7 @@ namespace SalesCrack.Controllers
         //Cambia el estado de un producto a Activado o Desactivado
         public void DoChangeProductStatus(int idProduct)
         {
-            Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
-            //Credential currentUser = (Credential)Session["current_user"];
+            Credential currentUser = SessionManager.GetCurrentUser();
             if (currentUser != null && currentUser.username == "admin")
             {
                 Product product = DBService.DBService.GetInstance().FindProductInStock(idProduct);
@@ -77,8 +74,7 @@ namespace SalesCrack.Controllers
         }
         public ActionResult Sellers()
         {
-            Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
-            //Credential currentUser = (Credential)Session["current_user"];
+            Credential currentUser = SessionManager.GetCurrentUser();
             if (currentUser == null || currentUser.username != "admin")
             {
                 return RedirectToAction("Login", "Login");

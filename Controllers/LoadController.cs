@@ -1,4 +1,5 @@
 ﻿using SalesCrack.Models;
+using SalesCrack.Utility;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -11,10 +12,9 @@ namespace SalesCrack.Controllers
 {
     public class LoadController : Controller
     {
-        public ActionResult Upload(string type)
+        public ActionResult Upload(string view)
         {
-            Credential currentUser = (Credential)System.Web.HttpContext.Current.Cache["current_user"];
-            //Credential currentUser = (Credential)Session["current_user"];
+            Credential currentUser = SessionManager.GetCurrentUser();
             if (currentUser == null || currentUser.username != "admin")
             {
                 return RedirectToAction("Login", "Login");
@@ -29,7 +29,7 @@ namespace SalesCrack.Controllers
                     while (line != null)
                     {
                         string[] arr = line.Split(',');
-                        if ("sellers" == type)
+                        if ("Sellers" == view)
                         {
                             int idSeller = int.Parse(arr[0]);
                             string usename = arr[1];
@@ -37,7 +37,7 @@ namespace SalesCrack.Controllers
                             Seller seller = new Seller(idSeller, usename, password);
                             DBService.DBService.GetInstance().AddSeller(seller);
                         }
-                        if ("products" == type)
+                        if ("Products" == view)
                         {
                             int idProduct = int.Parse(arr[0]);
                             string name = arr[1];
@@ -51,13 +51,12 @@ namespace SalesCrack.Controllers
                                 Product product = new Product(idProduct, name, stock, price, active, seller);
                                 DBService.DBService.GetInstance().AddToStock(product);
                             }
-
                         }
                         line = reader.ReadLine();
                     }
                 }
             }
-            return RedirectToAction("Products", "Admin");
+            return RedirectToAction(view, "Admin");
         }
     }
 }
