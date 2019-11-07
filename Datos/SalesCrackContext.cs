@@ -21,10 +21,10 @@ namespace SalesCrack.Datos
         public DbSet<ProductSeller> ProductSeller { get; set; }
         public DbSet<Credential> Credential { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-
-        }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+            
+        //}
     }
 
     public class SalesCrackInitializer : DropCreateDatabaseIfModelChanges<SalesCrackContext>

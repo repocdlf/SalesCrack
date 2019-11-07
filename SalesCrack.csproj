@@ -142,7 +142,10 @@
     <Compile Include="Models\ProductSeller.cs" />
     <Compile Include="Models\Credential.cs" />
     <Compile Include="Models\Seller.cs" />
+    <Compile Include="ModelView\ProdcutoModelView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reglas\RNProduct.cs" />
+    <Compile Include="Reglas\RNProductSeller.cs" />
     <Compile Include="Reglas\RNSeller.cs" />
     <Compile Include="Utility\SessionManager.cs" />
   </ItemGroup>

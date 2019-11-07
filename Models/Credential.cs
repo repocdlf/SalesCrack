@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,7 +8,8 @@ namespace SalesCrack.Models
 {
     public class Credential
     {
-       public string username
+        [Key]
+        public string username
         {
             get;
             set;
@@ -18,5 +20,6 @@ namespace SalesCrack.Models
             set;
         }
 
+        public Credential() { }
     }
 }

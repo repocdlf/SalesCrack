@@ -1,4 +1,5 @@
 ﻿using SalesCrack.Models;
+using SalesCrack.Reglas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,17 +9,17 @@ namespace SalesCrack.DBService
 {
     public class DBService
     {
-        private List<Seller> Sellers { get; set; }
-        private List<Product> Stock { get; set; }
-        private List<ProductSeller> Sold { get; set; }
+        //private List<Seller> Sellers { get; set; }
+        //private List<Product> Stock { get; set; }
+        //private List<ProductSeller> Sold { get; set; }
 
         private static DBService Instance = new DBService();
 
         private DBService()
         {
-            this.Sellers = new List<Seller>();
-            this.Stock = new List<Product>();
-            this.Sold = new List<ProductSeller>();
+            //this.Sellers = new List<Seller>();
+            //this.Stock = new List<Product>();
+            //this.Sold = new List<ProductSeller>();
         }
 
         public static DBService GetInstance()
@@ -36,11 +37,13 @@ namespace SalesCrack.DBService
                 Seller existingSeller = FindSellerById(newSeller.IdSeller);
                 if (existingSeller != null)
                 {
-                    existingSeller.ChangePassword(newSeller.Password);
+                    //existingSeller.ChangePassword(newSeller.Password);
+                    RNSeller.UpdateSeller(newSeller);
                 }
                 else
                 {
-                    this.Sellers.Add(newSeller);
+                    //this.Sellers.Add(newSeller);
+                    RNSeller.AddSeller(newSeller);
                 }
             }
         }
@@ -59,11 +62,15 @@ namespace SalesCrack.DBService
                 existingProduct.Stock += newProduct.Stock;
                 existingProduct.Price = newProduct.Price;
                 existingProduct.Active = newProduct.Active;
-                existingProduct.Seller = DBService.GetInstance().FindSellerById(newProduct.Seller.IdSeller);
+                //existingProduct.Seller = DBService.GetInstance().FindSellerById(newProduct.Seller.IdSeller);
+                //existingProduct.Seller = RNSeller.SearchSeller(newProduct.Seller.IdSeller);
+                RNProduct.UpdateProduct(existingProduct);
             }
             else
             {
-                this.Stock.Add(newProduct);
+                // this.Stock.Add(newProduct);
+                RNProduct.AddProducts(newProduct);
+               
             }
         }
 
@@ -80,10 +87,16 @@ namespace SalesCrack.DBService
                 p.Stock--;
                 if (p.Stock == 0)
                 {
-                    this.Stock.Remove(p);
+                    //this.Stock.Remove(p);
+                    RNProduct.Remove(p);
+                }
+                else
+                {
+                    RNProduct.UpdateProduct(p);
                 }
                 ProductSeller ps = new ProductSeller(idProduct, idSeller, p.Price);
-                this.Sold.Add(ps);
+                //this.Sold.Add(ps);
+                RNProductSeller.AddProductSeller(ps);
             }
         }
 
@@ -92,18 +105,18 @@ namespace SalesCrack.DBService
          */
         public Product FindProductInStock(int idProduct)
         {
-            Product product = null;
-            int i = 0;
-            while (product == null && i < this.Stock.Count)
-            {
-                Product aux = this.Stock.ElementAt(i);
-                if (aux.IdProduct == idProduct)
-                {
-                    product = aux;
-                }
-                i++;
-            }
-            return product;
+            //Product product = null;
+            //int i = 0;
+            //while (product == null && i < this.Stock.Count)
+            //{
+            //    Product aux = this.Stock.ElementAt(i);
+            //    if (aux.IdProduct == idProduct)
+            //    {
+            //        product = aux;
+            //    }
+            //    i++;
+            //}
+            return RNProduct.FindProduct(idProduct);
         }
 
         /**
@@ -111,66 +124,71 @@ namespace SalesCrack.DBService
          */
         public Seller FindSellerById(int idSeller)
         {
-            Seller s = null;
-            int i = 0;
-            while (s == null && i < this.Sellers.Count)
-            {
-                Seller aux = this.Sellers.ElementAt(i);
-                if (aux.IdSeller == idSeller)
-                {
-                    s = aux;
-                }
-                i++;
-            }
-            return s;
+            //Seller s = null;
+            //int i = 0;
+            //while (s == null && i < this.Sellers.Count)
+            //{
+            //    Seller aux = this.Sellers.ElementAt(i);
+            //    if (aux.IdSeller == idSeller)
+            //    {
+            //        s = aux;
+            //    }
+            //    i++;
+            //}
+            return RNSeller.SearchSeller(idSeller);
         }
 
         public List<Product> SearchProductsBySeller(int idSeller)
         {
-            List<Product> products = new List<Product>();
-            foreach (Product p in this.Stock)
-            {
-                if (p.Seller.IdSeller == idSeller && p.Active)
-                {
-                    products.Add(p);
-                }
-            }
-            return products;
+            //List<Product> products = new List<Product>();
+            //foreach (Product p in this.Stock)
+            //{
+            //    if (p.Seller.IdSeller == idSeller && p.Active)
+            //    {
+            //        products.Add(p);
+            //    }
+            //}
+  
+            return RNProduct.SearchProductsBySeller(idSeller);
         }
 
         public List<Product> SearchAllProducts()
         {
-            List<Product> products = new List<Product>();
-            foreach (Product p in this.Stock)
-            {
-                products.Add(p);
-            }
-            return products;
+            //List<Product> products = new List<Product>();
+            //foreach (Product p in this.Stock)
+            //{
+            //    products.Add(p);
+            //}
+            return RNProduct.SearchAllProducts();
         }
 
         public Seller FindSellerByUsername(string username)
         {
-            Seller s = null;
-            int i = 0;
-            while (s == null && i < this.Sellers.Count)
-            {
-                Seller aux = this.Sellers.ElementAt(i);
-                if (aux.Usename == username)
-                {
-                    s = aux;
-                }
-                i++;
-            }
-            return s;
+            //Seller s = null;
+            //int i = 0;
+            //while (s == null && i < this.Sellers.Count)
+            //{
+            //    Seller aux = this.Sellers.ElementAt(i);
+            //    if (aux.Usename == username)
+            //    {
+            //        s = aux;
+            //    }
+            //    i++;
+            //}
+            return RNSeller.FindSellerByUsername(username);
         }
+
+        /**
+        * Devuelve una lista con todos los vendedores
+        */
         public List<Seller> SearchAllSellers()
         {
-            List<Seller> Sellers = new List<Seller>();
-            foreach (Seller s in this.Sellers)
-            {
-                Sellers.Add(s);
-            }
-            return Sellers;
+            //List<Seller> Sellers = new List<Seller>();
+            //foreach (Seller s in this.Sellers)
+            //{
+            //    Sellers.Add(s);
+            //}
+            return RNSeller.BuscarSellers();
         }
     }
 }
