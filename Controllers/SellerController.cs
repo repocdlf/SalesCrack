@@ -44,7 +44,7 @@ namespace SalesCrack.Controllers
             }
             Seller seller = DBService.DBService.GetInstance().FindSellerByUsername(currentUser.username);
             Product product = DBService.DBService.GetInstance().FindProductInStock(idProduct);
-            if (product != null && product.Seller.IdSeller == seller.IdSeller)
+            if (product != null && product.IdSeller == seller.IdSeller)
             {
                 DBService.DBService.GetInstance().DoSell(idProduct, seller.IdSeller);
             }
