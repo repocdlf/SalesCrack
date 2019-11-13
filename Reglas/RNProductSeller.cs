@@ -15,6 +15,7 @@ namespace SalesCrack.Reglas
         public static void AddProductSeller(ProductSeller ps)
         {
             context.ProductSeller.Add(ps);
+            context.SaveChanges();
         }
     }
 }

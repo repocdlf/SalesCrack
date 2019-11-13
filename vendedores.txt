@@ -1,6 +1,3 @@
 1,gperez,gperez
 2,dgomez,dgomez
 3,cruiz,cruiz
-4,a,a
-5,b,b
-6,c,c

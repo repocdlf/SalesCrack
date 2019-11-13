@@ -22,6 +22,11 @@ namespace SalesCrack.DBService
             //this.Sold = new List<ProductSeller>();
         }
 
+        internal void AddCredential(Credential credent)
+        {
+            RNCredential.AddCredential(credent);
+        }
+
         public static DBService GetInstance()
         {
             return DBService.Instance;
@@ -62,6 +67,7 @@ namespace SalesCrack.DBService
                 existingProduct.Stock += newProduct.Stock;
                 existingProduct.Price = newProduct.Price;
                 existingProduct.Active = newProduct.Active;
+                existingProduct.IdSeller = newProduct.IdSeller;
                 //existingProduct.Seller = DBService.GetInstance().FindSellerById(newProduct.Seller.IdSeller);
                 //existingProduct.Seller = RNSeller.SearchSeller(newProduct.Seller.IdSeller);
                 RNProduct.UpdateProduct(existingProduct);
@@ -69,7 +75,7 @@ namespace SalesCrack.DBService
             else
             {
                 // this.Stock.Add(newProduct);
-                RNProduct.AddProducts(newProduct);
+                RNProduct.AddProduct(newProduct);
                
             }
         }
@@ -85,18 +91,19 @@ namespace SalesCrack.DBService
             if (p != null && s != null)
             {
                 p.Stock--;
-                if (p.Stock == 0)
+                if (p.Stock < 0)
                 {
                     //this.Stock.Remove(p);
-                    RNProduct.Remove(p);
+                    //RNProduct.Remove(p);
                 }
                 else
                 {
                     RNProduct.UpdateProduct(p);
+                    ProductSeller ps = new ProductSeller(idProduct, idSeller, p.Price);
+                    //this.Sold.Add(ps);
+                    RNProductSeller.AddProductSeller(ps);
                 }
-                ProductSeller ps = new ProductSeller(idProduct, idSeller, p.Price);
-                //this.Sold.Add(ps);
-                RNProductSeller.AddProductSeller(ps);
+                
             }
         }
 

@@ -9,6 +9,11 @@ namespace SalesCrack.Models
     public class Credential
     {
         [Key]
+        public int id
+        {
+            get;
+            set;
+        }
         public string username
         {
             get;

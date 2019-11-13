@@ -48,7 +48,7 @@ namespace SalesCrack.Controllers
                             Seller seller = DBService.DBService.GetInstance().FindSellerById(idSeller);
                             if (seller != null)
                             {
-                                Product product = new Product(idProduct, name, stock, price, active, seller);
+                                Product product = new Product(idProduct, name, stock, price, active, seller.IdSeller);
                                 DBService.DBService.GetInstance().AddToStock(product);
                             }
                         }

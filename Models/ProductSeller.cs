@@ -10,14 +10,20 @@ namespace SalesCrack.Models
     public class ProductSeller
     {
         [Key]
-        [Column(Order = 1)]
+        public int Id
+        {
+            get;
+            set;
+        }
+        //[Key]
+        //[Column(Order = 1)]
         public int IdProduct
         {
             get;
             set;
         }
-        [Key]
-        [Column(Order = 2)]
+        //[Key]
+        //[Column(Order = 2)]
         public int IdSeller
         {
             get;

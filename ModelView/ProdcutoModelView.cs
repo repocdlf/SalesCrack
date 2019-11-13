@@ -6,7 +6,7 @@ using SalesCrack.Models;
 
 namespace SalesCrack.ModelView
 {
-    public class ProdcutoModelView : Product
+    public class ProdcutoModelView //: Product
     {
         public string NombreSeller { get; set; }
     }

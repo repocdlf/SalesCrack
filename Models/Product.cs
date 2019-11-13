@@ -16,23 +16,24 @@ namespace SalesCrack.Models
         public bool Active { get; set; }
 
         public int IdSeller { get; set; }
-        public Seller Seller { get; set; }
+        //public Seller Seller { get; set; }
 
         public Product() { }
 
-        public Product(int code, string name, int stock, double price, bool active, Seller seller)
+        public Product(int code, string name, int stock, double price, bool active, int IdSeller)
         {
             this.IdProduct = code;
             this.Name = name;
             this.Stock = stock;
             this.Price = price;
             this.Active = active;
-            this.Seller = seller;
+            this.IdSeller = IdSeller;
+            //this.Seller = seller;
         }
 
-        public void SetNewSeller(Seller seller)
-        {
-            this.Seller = seller;
-        }
+        //public void SetNewSeller(Seller seller)
+        //{
+        //    this.Seller = seller;
+        //}
     }
 }

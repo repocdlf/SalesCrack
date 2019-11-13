@@ -64,7 +64,7 @@ namespace SalesCrack.Reglas
         {
             return context.Seller
                     .Where(l => l.Usename == username)
-                    .First();
+                    .FirstOrDefault();
         }
     }
 }
