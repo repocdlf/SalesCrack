@@ -139,6 +139,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\OrderItem.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderSeller.cs" />
     <Compile Include="Models\ProductSeller.cs" />
     <Compile Include="Models\Credential.cs" />
     <Compile Include="Models\Seller.cs" />
@@ -199,6 +202,7 @@
     <Content Include="Views\Shared\Seller_Navbar_Layout.cshtml" />
     <Content Include="Views\Seller\Edit.cshtml" />
     <Content Include="Views\Admin\Sellers.cshtml" />
+    <Content Include="Views\Seller\Order.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

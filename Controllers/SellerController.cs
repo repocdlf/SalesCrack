@@ -52,6 +52,33 @@ namespace SalesCrack.Controllers
             return View("Edit", lista);
         }
 
+        public ActionResult Order()
+        {
+            Credential currentUser = SessionManager.GetCurrentUser();
+            if (currentUser == null || currentUser.username == "admin")
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            Seller seller = DBService.DBService.GetInstance().FindSellerByUsername(currentUser.username);
+         
+            List<Product> lista = DBService.DBService.GetInstance().SearchProductsBySeller(seller.IdSeller);
+            return View("Order", lista);
+        }
+
+        public ActionResult BulkOrder(List<OrderItem> orderItems)
+        {
+            Credential currentUser = SessionManager.GetCurrentUser();
+            if (currentUser == null || currentUser.username == "admin")
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            Seller seller = DBService.DBService.GetInstance().FindSellerByUsername(currentUser.username);
+            //Realizar el proceso de venta para cada item
+            List<Product> lista = DBService.DBService.GetInstance().SearchProductsBySeller(seller.IdSeller);
+            return View("Order", lista);
+        }
+
+
 
     }
 }
