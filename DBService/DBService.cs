@@ -107,6 +107,28 @@ namespace SalesCrack.DBService
             }
         }
 
+        internal void AddOrderDetail(int idOrder, int idProduct, int quantity)
+        {
+            Product product = DBService.GetInstance().FindProductInStock(idProduct);
+            OrderDetail order = new OrderDetail(idOrder, idProduct, quantity, product.Price * quantity);
+            RNOrderDetail.AddOrderDetail(order);
+        }
+
+        public void DoSell(int idProduct, int idSeller, int quantity)
+        {
+            for (int i = 0; i < quantity; i++)
+            {
+                DBService.GetInstance().DoSell(idProduct, idSeller);
+            }
+        }
+
+        public Order CreateOrder(int idSeller)
+        {
+            Order os;
+            os = RNOrder.AddOrder(idSeller);
+            return os;
+        }
+
         /**
          * Busca un producto en el stock por el codigo
          */

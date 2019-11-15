@@ -10,36 +10,23 @@ namespace SalesCrack.Models
     public class Order
     {
         [Key]
-        public int Id
+        public int IdOrder
         {
             get;
             set;
         }
-
-        public int IdProduct
+        
+        public int IdSeller
         {
             get;
             set;
         }
-
-        public int Quantity
-        {
-            get;
-            set;
-        }
-        public double TotalPrice
-        {
-            get;
-            set;
-        }
-
+       
         public Order() { }
 
-        public Order(int idProduct, int quantity, double totalPrice)
+        public Order(int idSeller)
         {
-            this.IdProduct = idProduct;
-            this.Quantity = quantity;
-            this.TotalPrice = totalPrice;
+            this.IdSeller = idSeller;
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Web;
 
 namespace SalesCrack.Models
 {
+    // Usado solamente para pasaje de datos entre la vista y el controller
     public class OrderItem
     {
         
@@ -20,6 +21,16 @@ namespace SalesCrack.Models
             get;
             set;
         }
-        
+
+        public OrderItem(int idProduct, int quantity)
+        {
+            this.IdProduct = idProduct;
+            this.Quantity = quantity;
+        }
+
+        public OrderItem()
+        {
+        }
+
     }
 }

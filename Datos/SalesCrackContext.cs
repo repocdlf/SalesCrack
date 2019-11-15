@@ -20,8 +20,8 @@ namespace SalesCrack.Datos
         public DbSet<Product> Product { get; set; }
         public DbSet<ProductSeller> ProductSeller { get; set; }
         public DbSet<Credential> Credential { get; set; }
+        public DbSet<OrderDetail> OrderDetail { get; set; }
         public DbSet<Order> Order { get; set; }
-        public DbSet<OrderSeller> OrderSeller { get; set; }
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{

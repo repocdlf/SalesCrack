@@ -22,12 +22,12 @@ namespace SalesCrack.Reglas
             return context.Seller.ToList();
         }
 
-        public static void AddSeller(Seller seller)
+        public static Seller AddSeller(Seller seller)
         {
-            //Validar(seller);
-            context.Seller.Add(seller);
+            seller = context.Seller.Add(seller);
             context.SaveChanges();
-
+            context.Entry(seller).GetDatabaseValues();
+            return seller;
         }
         public static void AddSeller2(Seller seller)
         {

@@ -140,14 +140,16 @@
     </Compile>
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\OrderItem.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\OrderSeller.cs" />
     <Compile Include="Models\ProductSeller.cs" />
     <Compile Include="Models\Credential.cs" />
     <Compile Include="Models\Seller.cs" />
     <Compile Include="ModelView\ProdcutoModelView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reglas\RNOrderDetail.cs" />
     <Compile Include="Reglas\RNProduct.cs" />
+    <Compile Include="Reglas\RNOrder.cs" />
     <Compile Include="Reglas\RNProductSeller.cs" />
     <Compile Include="Reglas\RNCredential.cs" />
     <Compile Include="Reglas\RNSeller.cs" />
