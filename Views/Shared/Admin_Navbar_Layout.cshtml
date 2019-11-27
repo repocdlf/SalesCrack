@@ -39,10 +39,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/Admin/Sellers">Show sellers</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/RankingBulkOrders?field=quantity&order=DESC">Ranking</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
-
             </div>
             <div class="col-sm-9">
                 @RenderBody()
@@ -53,12 +55,10 @@
             <p>&copy; @DateTime.Now.Year - SalesCrack!</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script src="~/Scripts/script.js"></script>
-
 </body>
 </html>

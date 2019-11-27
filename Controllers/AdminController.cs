@@ -1,4 +1,5 @@
 ﻿using SalesCrack.Models;
+using SalesCrack.ModelView;
 using SalesCrack.Utility;
 using System;
 using System.Collections.Generic;
@@ -82,5 +83,26 @@ namespace SalesCrack.Controllers
             List<Seller> lista = DBService.DBService.GetInstance().SearchAllSellers();
             return View("Sellers", lista);
         }
+
+        /**
+         * Ranking de pedidos por vendedor, cantidad de pedidos bulk, y monto acumulado de dichos pedidos
+         * field = campo por el cual se debe ordenar el resultado, puede ser quantity | price
+         * order = indica el tipo de ordenamiento, puede ser ASC | DESC
+         **/
+        public ActionResult RankingBulkOrders(String field, String order)
+        {
+            Credential currentUser = SessionManager.GetCurrentUser();
+            if (currentUser == null || currentUser.username != "admin")
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            ViewBag.LastField = (field != null && (field == "quantity" || field == "price") ? field : "quantity");
+            ViewBag.LastOrder = (order != null && (order == "ASC" || order == "DESC") ? order : "DESC");
+            List<RankingModelView> lista = DBService.DBService.GetInstance().GetRankingBySeller(field, order);
+            return View("RankingBulkOrders", lista);
+        }
     }
 }
+
+
+

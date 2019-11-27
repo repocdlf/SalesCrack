@@ -1,4 +1,5 @@
 ﻿using SalesCrack.Models;
+using SalesCrack.ModelView;
 using SalesCrack.Reglas;
 using System;
 using System.Collections.Generic;
@@ -218,6 +219,11 @@ namespace SalesCrack.DBService
             //    Sellers.Add(s);
             //}
             return RNSeller.BuscarSellers();
+        }
+
+        public List<RankingModelView> GetRankingBySeller(String field, String order)
+        {
+            return RNRanking.GetRankingBySeller(field, order);
         }
     }
 }
