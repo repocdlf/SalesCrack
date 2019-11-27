@@ -13,7 +13,9 @@ namespace SalesCrack.Datos
      */
     public class ADRanking
     {
-        public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\skynet\\Source\\Repos\\SalesCrack\\App_Data\\DBSalesCrack.mdf;Integrated Security=True";
+        public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename="
+            + AppDomain.CurrentDomain.BaseDirectory
+            + "App_Data\\DBSalesCrack.mdf;Integrated Security=True";
 
         /**
          * Ranking por vendedor por pedido masivo hecho

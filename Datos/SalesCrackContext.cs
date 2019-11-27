@@ -11,7 +11,11 @@ namespace SalesCrack.Datos
 {
     public class SalesCrackContext : DbContext
     {
-        public SalesCrackContext() : base("SalesCrackContext")
+        public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename="
+            + AppDomain.CurrentDomain.BaseDirectory
+            + "App_Data\\DBSalesCrack.mdf;Integrated Security=True";
+        //public SalesCrackContext() : base("SalesCrackContext")
+        public SalesCrackContext() : base(connectionString)
         {
             Database.SetInitializer<SalesCrackContext>(new SalesCrackInitializer());
         }
@@ -23,10 +27,6 @@ namespace SalesCrack.Datos
         public DbSet<OrderDetail> OrderDetail { get; set; }
         public DbSet<Order> Order { get; set; }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-
-        //}
     }
 
     public class SalesCrackInitializer : DropCreateDatabaseIfModelChanges<SalesCrackContext>
