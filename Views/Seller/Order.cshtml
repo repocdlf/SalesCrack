@@ -6,30 +6,37 @@
 }
 
 <h2>Order</h2>
-@using (Html.BeginForm("Login", "Login", FormMethod.Post)) { }
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Product</th>
-            <th scope="col">Stock</th>
-            <th scope="col">Price</th>
-            <th scope="col">Qty.</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var p in Model)
-        {
+@using (Html.BeginForm("BulkOrder", "Seller", FormMethod.Post))
+{
+    <button type="submit" class="btn btn-primary">Order bulk</button>
+    <table class="table">
+        <thead>
             <tr>
-                <th scope="row">@p.IdProduct</th>
-                <td>@p.Name</td>
-                <td>@p.Stock</td>
-                <td>@p.Price</td>
-                <td>
-                    <input class="form-control" type="number" value="0" id="example-number-input" min="1" max="5">
-                </td>
+                <th scope="col">ID</th>
+                <th scope="col">Product</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Price</th>
+                <th scope="col">Qty.</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <th scope="row">
+                        @p.IdProduct
+                        <input type="hidden" name="IdProduct" value="@p.IdProduct" />
+                     </th>
+                    <td>@p.Name</td>
+                    <td>@p.Stock</td>
+                    <td>@p.Price</td>
+                    <td>
+                        <input class="form-control" type="number" min="0" max="@p.Stock" name="Quantity" value="0">
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    
 }

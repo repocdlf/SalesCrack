@@ -60,7 +60,7 @@ namespace SalesCrack.Reglas
             List<Product> ret = new List<Product>();
             foreach (var p in aux)
             {
-                if (p.Active && p.Stock >= 0)
+                if (p.Active && p.Stock > 0)
                 {
                     ret.Add(p);
                 }

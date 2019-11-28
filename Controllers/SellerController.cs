@@ -65,27 +65,31 @@ namespace SalesCrack.Controllers
             return View("Order", lista);
         }
 
-        public ActionResult BulkOrder(List<OrderItem> orderItems)
+        public ActionResult BulkOrder(int[] IdProduct, int[] Quantity)
         {
-            orderItems = new List<OrderItem>();
-            orderItems.Add(new OrderItem(11, 3));
-            orderItems.Add(new OrderItem(21, 3));
-            orderItems.Add(new OrderItem(31, 3));
-            orderItems.Add(new OrderItem(41, 3));
-            orderItems.Add(new OrderItem(51, 3));
-            orderItems.Add(new OrderItem(16, 3));
-            orderItems.Add(new OrderItem(17, 3));
-            orderItems.Add(new OrderItem(18, 3));
-            orderItems.Add(new OrderItem(19, 3));
-            orderItems.Add(new OrderItem(13, 3));
+            
             Credential currentUser = SessionManager.GetCurrentUser();
             if (currentUser == null || currentUser.username == "admin")
             {
                 return RedirectToAction("Logout", "Login");
             }
             Seller seller = DBService.DBService.GetInstance().FindSellerByUsername(currentUser.username);
-            if (orderItems != null && orderItems.Any())
+
+            List<OrderItem> orderItems = new List<OrderItem>();
+            
+            for( var i = 0; i < IdProduct.Length; i++)
             {
+                if(Quantity[i] > 0)
+                {
+                    orderItems.Add(new OrderItem
+                    {
+                        IdProduct = IdProduct[i],
+                        Quantity = Quantity[i],
+                    });
+                }
+            }
+   
+            
                 // Proceso de gravacion del pedido
                 // Agregar registro en la tabla OrderSeller y obtener el IdOrder para este vendedor
                 Order os = DBService.DBService.GetInstance().CreateOrder(seller.IdSeller);
@@ -100,7 +104,7 @@ namespace SalesCrack.Controllers
                         DBService.DBService.GetInstance().DoSell(item.IdProduct, seller.IdSeller, item.Quantity);
                     }
                 }
-            }
+            
             List<Product> lista = DBService.DBService.GetInstance().SearchProductsBySeller(seller.IdSeller);
             return View("Order", lista);
         }

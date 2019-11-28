@@ -5,6 +5,10 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 
+
+/*
+ * No se usa mas este clase, esta como ejemplo para  una conexion ADO
+ */ 
 namespace SalesCrack.Datos
 {
     public class ADSeller
