@@ -67,7 +67,7 @@ namespace SalesCrack.Controllers
 
         public ActionResult BulkOrder(int[] IdProduct, int[] Quantity)
         {
-            
+
             Credential currentUser = SessionManager.GetCurrentUser();
             if (currentUser == null || currentUser.username == "admin")
             {
@@ -76,35 +76,37 @@ namespace SalesCrack.Controllers
             Seller seller = DBService.DBService.GetInstance().FindSellerByUsername(currentUser.username);
 
             List<OrderItem> orderItems = new List<OrderItem>();
-            
-            for( var i = 0; i < IdProduct.Length; i++)
+
+            if (IdProduct != null && Quantity != null)
             {
-                if(Quantity[i] > 0)
+                for (var i = 0; i < IdProduct.Length; i++)
                 {
-                    orderItems.Add(new OrderItem
+                    if (Quantity[i] > 0)
                     {
-                        IdProduct = IdProduct[i],
-                        Quantity = Quantity[i],
-                    });
-                }
-            }
-   
-            
-                // Proceso de gravacion del pedido
-                // Agregar registro en la tabla OrderSeller y obtener el IdOrder para este vendedor
-                Order os = DBService.DBService.GetInstance().CreateOrder(seller.IdSeller);
-                foreach (OrderItem item in orderItems)
-                {
-                    Product product = DBService.DBService.GetInstance().FindProductInStock(item.IdProduct);
-                    if (product != null && product.IdSeller == seller.IdSeller)
-                    {
-                        // Agregar el detalle del pedido
-                        DBService.DBService.GetInstance().AddOrderDetail(os.IdOrder, item.IdProduct, item.Quantity);
-                        // Proceso de ejecucion de la venta por mayor
-                        DBService.DBService.GetInstance().DoSell(item.IdProduct, seller.IdSeller, item.Quantity);
+                        orderItems.Add(new OrderItem
+                        {
+                            IdProduct = IdProduct[i],
+                            Quantity = Quantity[i],
+                        });
                     }
                 }
-            
+            }
+
+            // Proceso de gravacion del pedido
+            // Agregar registro en la tabla OrderSeller y obtener el IdOrder para este vendedor
+            Order os = DBService.DBService.GetInstance().CreateOrder(seller.IdSeller);
+            foreach (OrderItem item in orderItems)
+            {
+                Product product = DBService.DBService.GetInstance().FindProductInStock(item.IdProduct);
+                if (product != null && product.IdSeller == seller.IdSeller)
+                {
+                    // Agregar el detalle del pedido
+                    DBService.DBService.GetInstance().AddOrderDetail(os.IdOrder, item.IdProduct, item.Quantity);
+                    // Proceso de ejecucion de la venta por mayor
+                    DBService.DBService.GetInstance().DoSell(item.IdProduct, seller.IdSeller, item.Quantity);
+                }
+            }
+
             List<Product> lista = DBService.DBService.GetInstance().SearchProductsBySeller(seller.IdSeller);
             return View("Order", lista);
         }
