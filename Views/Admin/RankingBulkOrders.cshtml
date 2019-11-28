@@ -15,8 +15,8 @@
             <thead>
                 <tr>
                     <th scope="col">Seller ID</th>
-                    <th scope="col">Number of Bulk Order [@ViewBag.LastField]</th>
-                    <th scope="col">Total Amount [@ViewBag.LastOrder]</th>
+                    <th scope="col"><a class="nav-link" href="/Admin/RankingBulkOrders?field=quantity&order=@ViewBag.NextOrder">Number of Bulk Order</a></th>
+                    <th scope="col"><a class="nav-link" href="/Admin/RankingBulkOrders?field=price&order=@ViewBag.NextOrder">Total Amount</a></th>
                 </tr>
             </thead>
             <tbody>

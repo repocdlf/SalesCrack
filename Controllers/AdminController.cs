@@ -98,6 +98,7 @@ namespace SalesCrack.Controllers
             }
             ViewBag.LastField = (field != null && (field == "quantity" || field == "price") ? field : "quantity");
             ViewBag.LastOrder = (order != null && (order == "ASC" || order == "DESC") ? order : "DESC");
+            ViewBag.NextOrder = ("ASC" == ViewBag.LastOrder ? "DESC" : "ASC");
             List<RankingModelView> lista = DBService.DBService.GetInstance().GetRankingBySeller(field, order);
             return View("RankingBulkOrders", lista);
         }
