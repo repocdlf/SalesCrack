@@ -70,7 +70,8 @@ namespace SalesCrack.Controllers
             if (currentUser != null && currentUser.username == "admin")
             {
                 Product product = DBService.DBService.GetInstance().FindProductInStock(idProduct);
-                product.Active = !product.Active;
+                DBService.DBService.GetInstance().ChangeProductStatus(product);
+              
             }
         }
         public ActionResult Sellers()

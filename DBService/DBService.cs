@@ -81,6 +81,15 @@ namespace SalesCrack.DBService
             }
         }
 
+        /*
+           Cambia el estado del producto a Activado o Desactivado 
+        */
+        internal void ChangeProductStatus(Product product)
+        {
+            product.Active = !product.Active;
+            RNProduct.UpdateProduct(product);
+        }
+
         /**
          * Realiza la venta del producto a nivel de datos. Decrementa el stock del producto o lo elimina si correcponde
          */
